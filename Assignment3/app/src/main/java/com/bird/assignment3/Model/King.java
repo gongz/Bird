@@ -1,15 +1,13 @@
 package com.bird.assignment3.Model;
 
-/**
- * Created by v596747 on 1/30/17.
- */
 
 public class King extends ChessPiece {
 
-    public King(ChessPosition position) {
+    public King(ChessPosition cPosition, ChessPieceColor cColor) {
         super();
-        this.setCurrentPosition(position);
+        this.setCurrentPosition(cPosition);
         this.setPieceType(ChessPieceType.KING);
+        this.setPieceColor(cColor);
     }
 
 

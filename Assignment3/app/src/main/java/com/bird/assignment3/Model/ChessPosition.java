@@ -1,12 +1,10 @@
 package com.bird.assignment3.Model;
 
-/**
- * Created by v596747 on 1/30/17.
- */
 
 //Chess position on board
 
 public class ChessPosition {
+
 
     private Integer column;
     private Integer row;
@@ -34,6 +32,17 @@ public class ChessPosition {
         this.row = row;
     }
 
+    public boolean isValidPosition() {
+        return (this.column >= ChessBoard.COLUMN_BEGIN_INDEX &&
+                this.column <= ChessBoard.COLUMN_END_INDEX &&
+                this.row >= ChessBoard.ROW_BEGIN_INDEX &&
+                this.row <= ChessBoard.ROW_END_INDEX);
 
 
+    }
+
+    public boolean equals(ChessPosition chessPosition) {
+        return (this.row == chessPosition.row &&
+                this.column == chessPosition.column);
+    }
 }
