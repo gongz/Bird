@@ -17,6 +17,7 @@ public class Knight extends ChessPiece {
 
 
     public  boolean canMoveTo(ChessPosition position){
+
         return true;
     }
     public  boolean canKill(ChessPosition position){
