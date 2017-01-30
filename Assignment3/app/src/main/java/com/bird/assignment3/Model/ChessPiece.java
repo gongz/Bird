@@ -1,8 +1,5 @@
 package com.bird.assignment3.Model;
 
-/**
- * Created by v596747 on 1/30/17.
- */
 
 public abstract class ChessPiece {
     protected ChessPosition currentPosition;
