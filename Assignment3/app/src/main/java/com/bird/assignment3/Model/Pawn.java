@@ -16,15 +16,30 @@ public class Pawn extends ChessPiece {
 
     public boolean canMoveTo(ChessPosition position) {
         if (!super.canMoveTo(position)) {
-        	return false;
+            return false;
+        }
+        Integer rowMove = position.getRow() - currentPosition.getRow();
+        Integer colMove = position.getColumn() - currentPosition.getColumn();
+
+        // Traditionally the black pieces are arranged in the top two rows as shown.
+        if (this.pieceColor.equals(ChessPieceColor.BLACK)) {
+            rowMove *= -1;
         }
 
-        ChessPosition dist = position.getDistance(currentPosition);
-        return (dist.getRow() == 1 && dist.getColumn() >= 0) ||
-        		(dist.getColumn() == 1 && dist.getRow() >= 0);
+        return (rowMove == 1 && colMove == 0);
     }
-    
+
     public boolean canKill(ChessPosition position) {
-        return true;
+        if (!super.canMoveTo(position)) {
+            return false;
+        }
+        Integer rowMove = position.getRow() - currentPosition.getRow();
+        Integer colDis = Math.abs(position.getColumn() - currentPosition.getColumn());
+
+        // Traditionally the black pieces are arranged in the top two rows as shown.
+        if (this.pieceColor.equals(ChessPieceColor.BLACK)) {
+            rowMove *= -1;
+        }
+        return (rowMove == 1 && colDis == 1);
     }
 }

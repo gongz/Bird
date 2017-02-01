@@ -14,17 +14,17 @@ public class Rook extends ChessPiece {
     }
 
 
-    public  boolean canMoveTo(ChessPosition position) {
+    public boolean canMoveTo(ChessPosition position) {
         if (!super.canMoveTo(position)) {
-        	return false;
+            return false;
         }
-        
+
         // Rook requires a position on same row or column.
-        return (position.getDistance(currentPosition).getRow() == 0 ||
-            	position.getDistance(currentPosition).getColumn() == 0);
+        return (position.getRow() == currentPosition.getRow() ||
+                position.getColumn() == currentPosition.getColumn());
     }
-    
-    public  boolean canKill(ChessPosition position){
+
+    public boolean canKill(ChessPosition position) {
         return canMoveTo(position);
     }
 }

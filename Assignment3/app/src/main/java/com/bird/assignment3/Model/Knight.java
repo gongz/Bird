@@ -15,12 +15,14 @@ public class Knight extends ChessPiece {
 
     public boolean canMoveTo(ChessPosition position) {
         if (!super.canMoveTo(position)) {
-        	return false;
+            return false;
         }
-        
+
         // A knight can move only in an L pattern: two cells horizontally and one vertically or vice versa.
-        return (position.getAbsDistance(currentPosition).equals(new ChessPosition(2, 1)) ||
-        		position.getAbsDistance(currentPosition).equals(new ChessPosition(1, 2)));
+        Integer rowDis = Math.abs(position.getRow() - currentPosition.getRow());
+        Integer colDis = Math.abs(position.getColumn() - currentPosition.getColumn());
+
+        return (rowDis == 1 && colDis == 2) || (rowDis == 2 && colDis == 1);
     }
 
     public boolean canKill(ChessPosition position) {

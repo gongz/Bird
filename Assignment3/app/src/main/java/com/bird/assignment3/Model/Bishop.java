@@ -15,14 +15,13 @@ public class Bishop extends ChessPiece {
 
     public boolean canMoveTo(ChessPosition position) {
         if (!super.canMoveTo(position)) {
-        	return false;
+            return false;
         }
-        
-        return (position.getAbsDistance(currentPosition).getRow() ==
-            	position.getAbsDistance(currentPosition).getColumn());
+
+        return (Rule.onDiagonal(position, currentPosition));
     }
-    
+
     public boolean canKill(ChessPosition position) {
-        return true;
+        return canMoveTo(position);
     }
 }
