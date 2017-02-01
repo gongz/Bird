@@ -37,12 +37,19 @@ public class ChessPosition {
                 this.column <= ChessBoard.COLUMN_END_INDEX &&
                 this.row >= ChessBoard.ROW_BEGIN_INDEX &&
                 this.row <= ChessBoard.ROW_END_INDEX);
-
-
     }
 
     public boolean equals(ChessPosition chessPosition) {
         return (this.row == chessPosition.row &&
                 this.column == chessPosition.column);
+    }
+ 
+    public ChessPosition getDistance(ChessPosition chessPosition) {
+    	return new ChessPosition(chessPosition.row - this.row, chessPosition.column - this.column);	
+    }
+    
+    public ChessPosition getAbsDistance(ChessPosition chessPosition) {
+    	return new ChessPosition(Math.abs(chessPosition.row - this.row),
+    			Math.abs(chessPosition.column - this.column));	
     }
 }

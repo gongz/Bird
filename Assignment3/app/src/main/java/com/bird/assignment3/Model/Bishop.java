@@ -1,6 +1,6 @@
 package com.bird.assignment3.Model;
 
-//Bishop: A bishop can only move diagonally, and kill any opponent’s piece if it can move to its place.
+// Bishop: A bishop can only move diagonally, and kill any opponent’s piece if it can move to its place.
 
 public class Bishop extends ChessPiece {
 
@@ -13,12 +13,16 @@ public class Bishop extends ChessPiece {
     }
 
 
-    public  boolean canMoveTo(ChessPosition position){
-
-        return true;
+    public boolean canMoveTo(ChessPosition position) {
+        if (!super.canMoveTo(position)) {
+        	return false;
+        }
+        
+        return (position.getAbsDistance(currentPosition).getRow() ==
+            	position.getAbsDistance(currentPosition).getColumn());
     }
-    public  boolean canKill(ChessPosition position){
-
+    
+    public boolean canKill(ChessPosition position) {
         return true;
     }
 }

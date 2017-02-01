@@ -30,8 +30,12 @@ public abstract class ChessPiece {
         this.currentPosition = currentPosition;
     }
 
-    public abstract boolean canMoveTo(ChessPosition position);
-    public abstract boolean canKill(ChessPosition position);
-
-
+    public boolean canMoveTo(ChessPosition position) {
+        // A piece can't move outside the board or to its current position
+        return position.isValidPosition() && !position.equals(currentPosition);
+    }
+    
+    public boolean canKill(ChessPosition position) {
+    	return canMoveTo(position);
+    }
 }

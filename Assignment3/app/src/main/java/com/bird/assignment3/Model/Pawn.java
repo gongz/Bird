@@ -14,13 +14,17 @@ public class Pawn extends ChessPiece {
         this.setPieceColor(cColor);
     }
 
-    public  boolean canMoveTo(ChessPosition position){
+    public boolean canMoveTo(ChessPosition position) {
+        if (!super.canMoveTo(position)) {
+        	return false;
+        }
+
+        ChessPosition dist = position.getDistance(currentPosition);
+        return (dist.getRow() == 1 && dist.getColumn() >= 0) ||
+        		(dist.getColumn() == 1 && dist.getRow() >= 0);
+    }
+    
+    public boolean canKill(ChessPosition position) {
         return true;
     }
-    public  boolean canKill(ChessPosition position){
-
-        return true;
-    }
-
-
 }

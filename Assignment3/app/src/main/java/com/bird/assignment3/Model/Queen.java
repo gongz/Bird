@@ -14,11 +14,16 @@ public class Queen extends ChessPiece {
         this.setPieceColor(cColor);
     }
 
-    public  boolean canMoveTo(ChessPosition position){
-        return true;
+    public boolean canMoveTo(ChessPosition position){
+        if (!super.canMoveTo(position)) {
+        	return false;
+        }
+        
+        ChessPosition dist = position.getAbsDistance(currentPosition);
+        return (dist.getRow() == dist.getColumn() || dist.getRow() == 0 || dist.getColumn() == 0);
     }
-    public  boolean canKill(ChessPosition position){
-
+    
+    public boolean canKill(ChessPosition position){
         return true;
     }
 }
